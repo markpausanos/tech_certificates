@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useVGI = (firstName, lastName) => {
+const useVGI = (firstName, lastName) => {
 	const url = "https://608search.vgitraining.com/epasearch.php";
 
 	const [vgiData, setVgiData] = useState("");
@@ -12,7 +12,7 @@ export const useVGI = (firstName, lastName) => {
 				const response = await fetch(url, {
 					method: "GET",
 					headers: {
-						"Content-Type": "application/json",
+						"Content-Type": "text/html",
 					},
 				});
 
@@ -23,7 +23,7 @@ export const useVGI = (firstName, lastName) => {
 				setVgiData(data);
 				setIsLoading(false);
 			} catch (error) {
-				console.error(error);
+				console.error("Error fetching VGI data:", error);
 				setIsLoading(false);
 			}
 		};
@@ -32,3 +32,5 @@ export const useVGI = (firstName, lastName) => {
 
 	return { vgiData, isLoading };
 };
+
+export default useVGI;

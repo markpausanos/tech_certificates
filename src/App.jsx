@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useVGI } from "./hooks/useVGI";
+import useVGI from "./hooks/useVGI";
 import "./App.css";
 
 function App() {
-	const [vgiData, isLoading] = useVGI("", "");
+	const { vgiData, isLoading } = useVGI("", "");
 
 	return (
 		<div>
